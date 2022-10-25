@@ -41,6 +41,10 @@ function App() {
         {
           path:'/signup',
           element:<SignUp></SignUp>
+        },
+        {
+          path:'*',
+          element:<h1>Page Not Found</h1>
         }
       ]
     }
