@@ -15,7 +15,7 @@ const SignUp = () => {
         const email = form.email.value;
         const password = form.password.value;
         const confirmPassword = form.confirmPassword.value;
-        console.log(name,email,password,confirmPassword);
+        // console.log(name,email,password,confirmPassword);
         if(password.length< 8){
             setError('Password should be 8 characters or more');
             return;
