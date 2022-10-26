@@ -1,11 +1,14 @@
 import React from 'react';
+import { useState } from 'react';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/UserContext';
 import "./Login.css"
 
 const LogIn = () => {
+    const [error,setError]=useState('');
     const{signIn}=useContext(AuthContext);
+    const navigate = useNavigate()
     const handleSubmit =(e)=>{
         e.preventDefault()
         const form = e.target;
@@ -16,8 +19,15 @@ const LogIn = () => {
         .then(result=>{
             const user = result.user;
             console.log(user);
+            setError('')
+            form.reset();
+            navigate('/');
         })
-        .catch(error=>console.error(error));
+        .catch(error=>{
+            console.error(error)
+            setError(error.message);
+        });
+        
     }
     return (
         <div id='login-form' className='container w-25 mx-auto mt-5 shadow py-5'>
@@ -36,6 +46,7 @@ const LogIn = () => {
                     <button type="submit" className="btn btn-primary">Log In</button>
                     <Link to='/signup'>Create Account</Link>
                 </span>
+                <p>{error}</p>
             </form>
 
         </div>

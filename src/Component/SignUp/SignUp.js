@@ -1,17 +1,19 @@
 import React from 'react';
 import { useContext } from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/UserContext';
 
 const SignUp = () => {
     const[error,setError] = useState('');
-    const{createUser} = useContext(AuthContext);
+    const{createUser,updateUserProfile} = useContext(AuthContext);
+    const navigate = useNavigate();
     const handleSubmit=(e)=>{
         e.preventDefault()
         console.log(e);
         const form = e.target;
         const name = form.name.value;
+        const photoURL = form.photourl.value;
         const email = form.email.value;
         const password = form.password.value;
         const confirmPassword = form.confirmPassword.value;
@@ -30,8 +32,23 @@ const SignUp = () => {
             console.log(user);
             form.reset();
             setError('');
+            handleUpdateUserProfile(name,photoURL)
+            console.log(name,photoURL);
+            navigate('/');
         })
-        .catch(error=>console.error(error));
+        .catch(error=>{
+            console.error(error);
+            setError(error.message);
+        });
+    }
+    const handleUpdateUserProfile=(name,photoURL)=>{
+        const profile ={
+            displayName:name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+        .then(()=>{})
+        .catch(error=>console.error(error))
     }
     return (
         <div className='container w-25 mx-auto mt-5 shadow py-5'>
@@ -58,7 +75,7 @@ const SignUp = () => {
                 </div>
 
                 <span className='d-flex justify-content-between'>
-                    <button type="submit" className="btn btn-primary">Log In</button>
+                    <button type="submit" className="btn btn-primary">Sign Up</button>
                     <p>If you Have an Account <Link to='/login'>Log In</Link></p>
                 </span>
             </form>
