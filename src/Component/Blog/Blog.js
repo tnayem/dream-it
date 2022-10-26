@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../../Context/UserContext';
+import React from 'react';
 
 const Blog = () => {
     return (

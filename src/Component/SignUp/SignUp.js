@@ -1,7 +1,12 @@
 import React from 'react';
+import { useContext } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Context/UserContext';
 
 const SignUp = () => {
+    const[error,setError] = useState('');
+    const{createUser} = useContext(AuthContext);
     const handleSubmit=(e)=>{
         e.preventDefault()
         console.log(e);
@@ -11,6 +16,22 @@ const SignUp = () => {
         const password = form.password.value;
         const confirmPassword = form.confirmPassword.value;
         console.log(name,email,password,confirmPassword);
+        if(password.length< 8){
+            setError('Password should be 8 characters or more');
+            return;
+        }
+        if(password!==confirmPassword){
+            setError('Password did not match');
+            return;
+        }
+        createUser(email,password)
+        .then(result=>{
+            const user = result.user;
+            console.log(user);
+            form.reset();
+            setError('');
+        })
+        .catch(error=>console.error(error));
     }
     return (
         <div className='container w-25 mx-auto mt-5 shadow py-5'>
@@ -41,6 +62,7 @@ const SignUp = () => {
                     <p>If you Have an Account <Link to='/login'>Log In</Link></p>
                 </span>
             </form>
+            <p className='text-danger'>{error}</p>
         </div>
     );
 };
