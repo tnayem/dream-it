@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Course.css';
 
 const Course = ({ course }) => {
@@ -9,8 +10,8 @@ const Course = ({ course }) => {
                 <div className="card my-card">
                     <img id='course-image' src={img} className="card-img-top bg-light" alt="..." />
                     <div className="card-body">
-                        <h5 className="card-title">{title}</h5>
-
+                        <Link to={`/courseDetails/${id}`}><h5 className="btn">{title}</h5></Link>
+                        
                     </div>
                 </div>
             </div>

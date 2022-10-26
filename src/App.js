@@ -8,6 +8,7 @@ import Faq from './Component/Faq/Faq';
 import Blog from './Component/Blog/Blog';
 import LogIn from './Component/LogIn/LogIn';
 import SignUp from './Component/SignUp/SignUp';
+import CourseDetails from './Component/CourseDetails/CourseDetails';
 
 function App() {
   const router = createBrowserRouter([
@@ -18,7 +19,7 @@ function App() {
         {
           path:'/',
           loader: async () => {
-            return fetch('http://localhost:5000/course-data');
+            return fetch('http://localhost:5000/courses');
           },
           element:<Home></Home>
         },{
@@ -28,7 +29,7 @@ function App() {
         {
           path:'/courses',
           loader: async () => {
-            return fetch('http://localhost:5000/course-data');
+            return fetch('http://localhost:5000/courses');
           },
           element:<Courses></Courses>
         },
@@ -51,6 +52,13 @@ function App() {
         {
           path:'*',
           element:<h1>Page Not Found</h1>
+        },
+        {
+          path:'/courseDetails/:id',
+          loader: async ({params}) => {
+            return fetch(`http://localhost:5000/courses/${params.id}`);
+          },
+          element:<CourseDetails></CourseDetails>
         }
       ]
     }

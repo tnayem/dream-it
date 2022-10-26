@@ -1,10 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CourseList = ({course}) => {
-    const{title} =course; 
+    const{title,id} =course; 
     return (
-        <div className='me-5'>
-            <h4 className='border btn btn-outline-success w-100'>{title}</h4>
+        <div>
+            <Link to={`/courseDetails/${id}`}><h4 className='border btn btn-outline-success w-100 my-2'>{title}</h4></Link>
+            
         </div>
     );
 };
