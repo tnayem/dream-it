@@ -17,6 +17,9 @@ function App() {
       children:[
         {
           path:'/',
+          loader: async () => {
+            return fetch('http://localhost:5000/course-data');
+          },
           element:<Home></Home>
         },{
           path:'/home',
@@ -24,6 +27,9 @@ function App() {
         },
         {
           path:'/courses',
+          loader: async () => {
+            return fetch('http://localhost:5000/course-data');
+          },
           element:<Courses></Courses>
         },
         {
