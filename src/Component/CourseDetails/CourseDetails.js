@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import './CourseDetails.css'
 
 const CourseDetails = () => {
@@ -25,7 +25,7 @@ const CourseDetails = () => {
                     <h5>Teacher: <span className='text-black-50'>{teacher}</span></h5>
                     <h5 className='my-5'>Categories: <span className='text-black-50'>{categories}</span></h5>
                     <h5>Price: <span className='text-black-50'>{price} Tk</span></h5>
-                    <p className='text-center my-5'><button className='btn btn-success'>Get Premium Access</button></p>
+                    <Link to={`/checkout/${id}`}><p className='text-center my-5'><button className='btn btn-success'>Get Premium Access</button></p></Link>
                     <h1 className='text-secondary my-5'>Course Features</h1>
                     <h5 className='mb-3'>Duration: <span className='text-black-50'>4 Months</span></h5>
                     <h5 className='mb-3'>Skill Requirements: <span className='text-black-50'>Beginner</span></h5>
