@@ -36,7 +36,10 @@ const Navbar = () => {
                                 user?.uid ?
                                     <Link onClick={logOut} to='/signup'><button className='btn btn-outline-danger ms-2'>Log Out</button></Link>
                                     :
-                                    <Link to='/login'><button className='btn btn-outline-primary'>Log In</button></Link>
+                                    <>
+                                        <Link to='/signup'><button className='btn btn-outline-primary'>Sign Up</button></Link>
+                                        <Link to='/login'><button className='btn btn-outline-primary ms-2'>Log In</button></Link>
+                                    </>
                             }
                             {
                                 user?.photoURL ?
@@ -44,7 +47,7 @@ const Navbar = () => {
                                     :
                                     <img title={user?.displayName} className='ms-3 user-photo' src={profile} alt='' />
                             }
-                            
+
 
 
                         </ul>

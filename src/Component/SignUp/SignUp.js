@@ -6,7 +6,7 @@ import { AuthContext } from '../../Context/UserContext';
 
 const SignUp = () => {
     const[error,setError] = useState('');
-    const{createUser,updateUserProfile} = useContext(AuthContext);
+    const{createUser,updateUserProfile,handleGoogleSignIn,handleFacebookSignIn} = useContext(AuthContext);
     const navigate = useNavigate();
     const handleSubmit=(e)=>{
         e.preventDefault()
@@ -50,6 +50,33 @@ const SignUp = () => {
         .then(()=>{})
         .catch(error=>console.error(error))
     }
+//Google Sign Up
+    const googleSignUp =()=>{
+        handleGoogleSignIn()
+        .then(result=>{
+            const user = result.user;
+            console.log(user);
+            navigate('/');
+
+            
+        })
+        .catch(error=>{
+            console.error(error);
+            navigate('/');
+        })
+    }
+//Facebook Sign up
+const facebookSignUp =()=>{
+    handleFacebookSignIn()
+    .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.error(error)
+      });
+}
+    
     return (
         <div className='container w-25 mx-auto mt-5 shadow py-5'>
             <form onSubmit={handleSubmit}>
@@ -80,6 +107,12 @@ const SignUp = () => {
                 </span>
             </form>
             <p className='text-danger'>{error}</p>
+            <button onClick={googleSignUp} className='btn btn-outline-info w-100 mb-3'>
+                Sign Up With Google
+            </button>
+            <button onClick={facebookSignUp} className='btn btn-outline-info w-100'>
+                Sign Up With Facebook
+            </button>
         </div>
     );
 };
