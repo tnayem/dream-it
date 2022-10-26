@@ -11,9 +11,9 @@ const CourseDetails = () => {
                 <h1 className='text-center display-4 text-secondary'>{title}-</h1>
                 <h1 className='text-center display-6 text-black-50'>Dream It Institute</h1>
             </div>
-            <div className='container d-flex'>
+            <div className='container d-md-flex'>
 
-                <div className="col-md-8 mt-5">
+                <div className="col col-md-8 mt-5">
 
                     <div className="w-50 mx-auto">
                         <img className='course-logo w-100' src={img} alt="" />
@@ -21,7 +21,7 @@ const CourseDetails = () => {
                     <h1>{title}</h1>
                     <p className='text-justify text-black-50 my-3'>{description}</p>
                 </div>
-                <div className="col-md-4 shadow p-3">
+                <div className="col col-md-4 shadow p-3">
                     <h5>Teacher: <span className='text-black-50'>{teacher}</span></h5>
                     <h5 className='my-5'>Categories: <span className='text-black-50'>{categories}</span></h5>
                     <h5>Price: <span className='text-black-50'>{price} Tk</span></h5>

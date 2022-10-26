@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/UserContext';
+import './SignUp.css';
 
 const SignUp = () => {
     const[error,setError] = useState('');
@@ -78,7 +79,7 @@ const facebookSignUp =()=>{
 }
     
     return (
-        <div className='container w-25 mx-auto mt-5 shadow py-5'>
+        <div id='sign-up-form' className='container mx-auto mt-5 shadow py-5'>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="exampleInputName" className="form-label">Name</label>

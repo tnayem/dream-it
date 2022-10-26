@@ -32,7 +32,7 @@ const LogIn = () => {
         
     }
     return (
-        <div id='login-form' className='container w-25 mx-auto mt-5 shadow py-5'>
+        <div id='login-form' className='container mx-auto mt-5 shadow py-5'>
             <h3>Log In Hear</h3>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
