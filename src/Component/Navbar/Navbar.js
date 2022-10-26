@@ -3,11 +3,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../Context/UserContext';
-import './Navbar.css';
 import profile from '../../profile.png';
+import './Navbar.css';
 
 const Navbar = () => {
-    const{user,logOut}=useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
     return (
         <div>
             <nav className="navbar navbar-expand-lg bg-light">
@@ -33,21 +33,19 @@ const Navbar = () => {
                                 <Link className="nav-link" to="/blog">Blog</Link>
                             </li>
                             {
-                                user?.uid?
-                                <Link onClick={logOut} to='/signup'><button className='btn btn-outline-danger ms-2'>Log Out</button></Link>
-                                :
-                                <Link to='/login'><button className='btn btn-outline-primary'>Log In</button></Link>
-                            }
-                            <li>
-                                {
-                                    user?.photoURL?
-                                    <img className='ms-3 user-photo' src={user?.photoURL} alt=''/>
+                                user?.uid ?
+                                    <Link onClick={logOut} to='/signup'><button className='btn btn-outline-danger ms-2'>Log Out</button></Link>
                                     :
-                                    <img className='ms-3 user-photo' src={profile} alt=''/>
-                                }
-                            </li>
+                                    <Link to='/login'><button className='btn btn-outline-primary'>Log In</button></Link>
+                            }
+                            {
+                                user?.photoURL ?
+                                    <img title={user?.displayName} className='ms-3 user-photo' src={user?.photoURL} alt='' />
+                                    :
+                                    <img title={user?.displayName} className='ms-3 user-photo' src={profile} alt='' />
+                            }
                             
-                            
+
 
                         </ul>
                     </div>
