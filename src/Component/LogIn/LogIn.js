@@ -46,7 +46,7 @@ const LogIn = () => {
                     <button type="submit" className="btn btn-primary">Log In</button>
                     <Link to='/signup'>Create Account</Link>
                 </span>
-                <p>{error}</p>
+                <p className='text-danger'>{error}</p>
             </form>
 
         </div>
