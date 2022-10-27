@@ -11,6 +11,7 @@ import SignUp from './Component/SignUp/SignUp';
 import CourseDetails from './Component/CourseDetails/CourseDetails';
 import CheckOut from './Component/CheckOut/CheckOut';
 import PrivateRout from './Component/Routs/PrivateRout';
+import NotFound from './Component/NotFound/NotFound';
 
 function App() {
   const router = createBrowserRouter([
@@ -21,7 +22,7 @@ function App() {
         {
           path:'/',
           loader: async () => {
-            return fetch('http://localhost:5000/courses');
+            return fetch('https://dream-it-server.vercel.app/courses');
           },
           element:<Home></Home>
         },{
@@ -31,7 +32,7 @@ function App() {
         {
           path:'/courses',
           loader: async () => {
-            return fetch('http://localhost:5000/courses');
+            return fetch('https://dream-it-server.vercel.app/courses');
           },
           element:<Courses></Courses>
         },
@@ -53,19 +54,19 @@ function App() {
         },
         {
           path:'*',
-          element:<h1>Page Not Found</h1>
+          element:<NotFound></NotFound>
         },
         {
           path:'/courseDetails/:id',
           loader: async ({params}) => {
-            return fetch(`http://localhost:5000/courses/${params.id}`);
+            return fetch(`https://dream-it-server.vercel.app/courses/${params.id}`);
           },
           element:<CourseDetails></CourseDetails>
         },
         {
           path:'/checkout/:id',
           loader: async ({params}) => {
-            return fetch(`http://localhost:5000/courses/${params.id}`);
+            return fetch(`https://dream-it-server.vercel.app/courses/${params.id}`);
           },
           element:<PrivateRout><CheckOut></CheckOut></PrivateRout>
         }
