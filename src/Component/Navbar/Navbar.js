@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../Context/UserContext';
 import profile from '../../profile.png';
 import './Navbar.css';
+import DarkMode from '../DarkMode/DarkMode';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext)
@@ -49,7 +50,7 @@ const Navbar = () => {
                             }
 
 
-
+                            <DarkMode></DarkMode>
                         </ul>
                     </div>
                 </div>
