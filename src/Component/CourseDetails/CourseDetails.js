@@ -32,7 +32,7 @@ const CourseDetails = () => {
                     <h5 className='mb-3'>Language: <span className='text-black-50'>Bangali/English</span></h5>
                     <h5 className='mb-3'>Student: <span className='text-black-50'>50</span></h5>
                     <h5 className='mb-3'>Assignment: <span className='text-black-50'>Yes</span></h5>
-                    <a href="nayem.pdf" download='nayem.pdf'>
+                    <a href="../../../public/nayem.pdf" download='nayem.pdf'>
                         <button>Dawnload</button>
                     </a>
                 </div>
